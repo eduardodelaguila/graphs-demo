@@ -32,7 +32,7 @@ const Line = () => {
                         options={{
                             chart: {
                                 id: "income-chart",
-                                stacked: true,
+                                stacked: false,
                             },
                             dataLabels: {
                                 enabled: false,
@@ -41,30 +41,32 @@ const Line = () => {
                                 size: 0,
                                 style: "hollow",
                             },
+                            stroke: {
+                                curve: "smooth",
+                            },
                             yaxis: [
                                 {
                                     seriesName: "Gross",
                                     title: {
                                         text: "Gross",
                                     },
-                                    min: minima[0],
-                                    max: maxima[0],
+                                    forceNiceScale: false,
                                 },
                                 {
-                                    seriesName: "Gross",
+                                    seriesName: "Net",
                                     opposite: true,
-                                    min: minima[0],
-                                    max: maxima[0],
+                                    show: false,
                                 },
                                 {
                                     seriesName: "Volume",
+                                    min: minima[2],
+                                    max: maxima[2],
                                     opposite: true,
 
                                     title: {
                                         text: "Volume",
                                     },
-                                    min: minima[2],
-                                    max: maxima[2],
+                                    forceNiceScale: false,
                                 },
                             ],
                             xaxis: {
