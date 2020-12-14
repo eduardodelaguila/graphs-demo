@@ -1,18 +1,35 @@
+import { useContext, useEffect, useCallback, useState } from "react";
 import { ResponsiveLine } from "@nivo/line";
+import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 
-import { nivo } from "../../mock/data";
+import { DataContext } from "../../context/DataContext";
+
+import { handleNivo } from "../../mock/generator";
 
 import "./Victory.scss";
 
 const Line = () => {
-    const { curated, maxima } = nivo;
-    console.log(curated);
+    const [datasets, setDatasets] = useState({});
+    const { data } = useContext(DataContext);
+
+    const triggerDataImplementation = useCallback(() => {
+        if (data.length !== 0) {
+            setDatasets(handleNivo(data));
+        }
+    }, [data]);
+
+    useEffect(() => {
+        triggerDataImplementation();
+    }, [data, triggerDataImplementation]);
+
+    const { curated } = datasets;
     return (
         <div className="flex-container">
-            <div className="flex-container__line-container">
+            {datasets.hasOwnProperty("curated") ? (
                 <ResponsiveLine
+                    enableGridX={false}
                     enableGrid={false}
-                    enablePointLabel
+                    enablePoints={false}
                     useMesh
                     margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
                     data={curated}
@@ -53,7 +70,12 @@ const Line = () => {
                         legendPosition: "middle",
                     }}
                 ></ResponsiveLine>
-            </div>
+            ) : (
+                <div>
+                    <SettingsOutlinedIcon />
+                    <p>Select your data</p>
+                </div>
+            )}
         </div>
     );
 };

@@ -27,10 +27,10 @@ const Line = () => {
         return () => {
             window.removeEventListener("resize", setWidthToComponent);
         };
-    }, []);
+    }, [setWidthToComponent]);
 
     const colors = ["#9965f4", "#f186c0", "#ff8d00"];
-    const { curated, maxima, minima } = uber;
+    const { curated } = uber;
 
     return (
         <div className="flex-container">

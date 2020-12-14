@@ -1,0 +1,15 @@
+.data-selector {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: wrap;
+    width: 100%;
+}
+
+.data-selector-accordion {
+    & .MuiAccordionSummary-root {
+        border-bottom: 1px solid rgba(#3a3a3a, 0.5);
+    }
+    & .MuiAccordionSummary-content {
+        justify-content: space-between;
+    }
+}

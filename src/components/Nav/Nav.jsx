@@ -43,36 +43,6 @@ const Nav = () => {
                 open={drawerIsOpen}
                 onClose={() => setDrawerIsOpen(false)}
             >
-                <p>Victory</p>
-                <List component="nav">
-                    <ListItem
-                        button
-                        onClick={() => changeRoute("/victory/line")}
-                    >
-                        <ShowChartIcon />
-                        Line
-                    </ListItem>
-                </List>
-                <Divider />
-                <p>Uber's React Vis</p>
-                <List component="nav" aria-label="secondary mailbox folders">
-                    <ListItem button onClick={() => changeRoute("/uber/line")}>
-                        <ShowChartIcon />
-                        Line
-                    </ListItem>
-                </List>
-                <Divider />
-                <p>Spotify's Reactochart</p>
-                <List component="nav" aria-label="secondary mailbox folders">
-                    <ListItem
-                        button
-                        onClick={() => changeRoute("/spotify/line")}
-                    >
-                        <ShowChartIcon />
-                        Line
-                    </ListItem>
-                </List>
-                <Divider />
                 <p>Nivo</p>
                 <List component="nav" aria-label="secondary mailbox folders">
                     <ListItem button onClick={() => changeRoute("/nivo/line")}>
